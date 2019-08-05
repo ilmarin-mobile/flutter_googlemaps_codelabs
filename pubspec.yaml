@@ -27,7 +27,15 @@ dependencies:
   # Add the following line
   google_maps_flutter: ^0.5.20
 
+  # Add the following two lines
+  http: ^0.12.0+1
+  json_serializable: ^2.0.2
+
 dev_dependencies:
+
+  pedantic: ^1.4.0
+  build_runner: ^1.2.7
+
   flutter_test:
     sdk: flutter
 
