@@ -1,20 +1,39 @@
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(GoogleMapApp());
 
-class MyApp extends StatelessWidget {
+class GoogleMapApp extends StatefulWidget {
+  @override
+  _GoogleMapAppState createState() => _GoogleMapAppState();
+}
+
+class _GoogleMapAppState extends State<GoogleMapApp> {
+  GoogleMapController mapController;
+  
+  final LatLng _center = const LatLng(45.521563, -122.677433);
+
+  void _onMapCreated(GoogleMapController controller) {
+    mapController = controller;
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Welcome to Flutter',
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Welcome to Flutter'),
+          title: Text('Maps Sample App'),
+          backgroundColor: Colors.green[700],
         ),
-        body: const Center(
-          child: const Text('Hello World'),
+        body: GoogleMap(
+          onMapCreated: _onMapCreated,
+          initialCameraPosition: CameraPosition(
+            target: _center,
+            zoom: 11.0,
+          )
         ),
       ),
     );
   }
+
 }
